@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Database, Zap, ArrowRight, Server, Shield } from 'lucide-react';
+import { Database, Zap, ArrowRight, Server } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
