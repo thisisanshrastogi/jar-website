@@ -68,8 +68,8 @@ export default function Home() {
                 <div className="bento-icon">
                   <Server size={24} />
                 </div>
-                <h3>MQTT v3.1.1 Native</h3>
-                <p>No SDKs required. Standard clients like mosquitto_pub, Paho, and existing IoT hardware connect right out of the box with persistent sessions.</p>
+                <h3>Native MQTT Pub/Sub</h3>
+                <p>No SDKs required. Standard clients like mosquitto_pub, Paho, and existing IoT hardware connect via standard push-based Pub/Sub right out of the box with persistent sessions.</p>
               </div>
 
               {/* Card 3: Standard (1 column) */}
@@ -84,10 +84,10 @@ export default function Home() {
               {/* Card 4: Standard (1 column) */}
               <div className="bento-card">
                 <div className="bento-icon">
-                  <Shield size={24} />
+                  <Database size={24} />
                 </div>
-                <h3>Smart Backpressure</h3>
-                <p>Per-client buffered channels natively prevent slow consumers from impacting fast ones.</p>
+                <h3>Pull-Based Broker</h3>
+                <p>While IoT devices push data, your backend services can safely consume at their own pace via a custom offset-based pull protocol.</p>
               </div>
             </div>
           </div>
