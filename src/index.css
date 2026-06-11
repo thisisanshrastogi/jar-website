@@ -54,7 +54,13 @@ a:hover {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 2rem;
+  }
 }
 
 .text-center {
@@ -66,12 +72,9 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: rgba(10, 10, 10, 0.7);
+  background-color: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
-  height: 64px;
-  display: flex;
-  align-items: center;
 }
 
 .navbar-inner {
@@ -79,14 +82,17 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 64px;
 }
 
 .nav-brand {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
+  flex-shrink: 0;
 }
 
+/* Desktop nav links */
 .nav-links {
   display: flex;
   gap: 2rem;
@@ -101,6 +107,68 @@ a:hover {
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--text-primary);
+}
+
+/* Hide desktop links on mobile, show hamburger */
+.nav-links-desktop {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .nav-links-desktop {
+    display: flex;
+  }
+}
+
+/* Hamburger button */
+.nav-hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  padding: 0.4rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.nav-hamburger:hover {
+  background: rgba(255,255,255,0.07);
+}
+
+@media (min-width: 640px) {
+  .nav-hamburger {
+    display: none;
+  }
+}
+
+/* Mobile drawer */
+.nav-mobile-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.25rem 1.5rem;
+  gap: 1.25rem;
+  border-top: 1px solid var(--border-color);
+  background-color: rgba(10, 10, 10, 0.95);
+}
+
+.nav-mobile-menu a {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.nav-mobile-menu a:hover,
+.nav-mobile-menu a.active {
+  color: var(--text-primary);
+}
+
+@media (min-width: 640px) {
+  .nav-mobile-menu {
+    display: none;
+  }
 }
 
 /* Buttons */
@@ -144,9 +212,15 @@ a:hover {
 /* Hero Section */
 .hero {
   position: relative;
-  padding: 7rem 0 5rem;
+  padding: 4rem 0 3.5rem;
   text-align: center;
   overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .hero {
+    padding: 7rem 0 5rem;
+  }
 }
 
 .hero-glow {
@@ -165,7 +239,7 @@ a:hover {
 }
 
 .hero h1 {
-  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-size: clamp(2rem, 8vw, 4.5rem);
   line-height: 1.1;
   max-width: 800px;
   margin: 0 auto 1.5rem;
@@ -176,25 +250,61 @@ a:hover {
 }
 
 .hero .full-form {
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   color: var(--accent-color);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   font-weight: 600;
+  word-break: break-word;
+}
+
+@media (min-width: 640px) {
+  .hero .full-form {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+  }
 }
 
 .hero p.subtitle {
-  font-size: 1.25rem;
+  font-size: 1rem;
   max-width: 600px;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 2rem;
   color: var(--text-secondary);
+}
+
+@media (min-width: 640px) {
+  .hero p.subtitle {
+    font-size: 1.25rem;
+    margin: 0 auto 2.5rem;
+  }
 }
 
 .hero-actions {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.75rem;
   justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 480px) {
+  .hero-actions {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.hero-actions .btn {
+  width: 100%;
+  max-width: 280px;
+}
+
+@media (min-width: 480px) {
+  .hero-actions .btn {
+    width: auto;
+    max-width: none;
+  }
 }
 
 /* Terminal / Codeblock */
@@ -203,15 +313,24 @@ a:hover {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  padding: 1.5rem;
-  margin: 4rem auto 0;
+  padding: 1.25rem;
+  margin: 2.5rem auto 0;
+  width: 100%;
   max-width: 650px;
   text-align: left;
   font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-  font-size: 0.875rem;
+  font-size: 0.78rem;
   color: #e4e4e7;
   overflow-x: auto;
   box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+}
+
+@media (min-width: 640px) {
+  .terminal {
+    padding: 1.5rem;
+    margin: 4rem auto 0;
+    font-size: 0.875rem;
+  }
 }
 
 .terminal-header {
@@ -242,15 +361,28 @@ a:hover {
 
 /* Features Section (Bento Grid) */
 .features-section {
-  padding: 6rem 0;
+  padding: 3.5rem 0;
   position: relative;
+}
+
+@media (min-width: 640px) {
+  .features-section {
+    padding: 6rem 0;
+  }
 }
 
 .bento-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-top: 4rem;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 640px) {
+  .bento-grid {
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -269,9 +401,9 @@ a:hover {
 }
 
 .bento-card {
-  padding: 2.5rem;
+  padding: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
+  border-radius: 16px;
   background: linear-gradient(160deg, rgba(20,20,20,0.6) 0%, rgba(10,10,10,0.8) 100%);
   backdrop-filter: blur(10px);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -279,6 +411,13 @@ a:hover {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .bento-card {
+    padding: 2.5rem;
+    border-radius: 20px;
+  }
 }
 
 .bento-card::before {
@@ -358,12 +497,23 @@ a:hover {
 
 .docs-sidebar {
   width: 280px;
+  flex-shrink: 0;
   border-right: 1px solid var(--border-color);
   padding: 2.5rem 2rem;
   position: sticky;
   top: 64px;
   height: calc(100vh - 64px);
   overflow-y: auto;
+}
+
+/* Mobile sidebar toggle — hidden on desktop */
+.docs-sidebar-toggle {
+  display: none;
+}
+
+/* Sidebar body always visible on desktop */
+.docs-sidebar-body {
+  display: block;
 }
 
 .docs-sidebar-section {
@@ -404,8 +554,21 @@ a:hover {
 
 .docs-content {
   flex: 1;
-  padding: 4rem 5rem;
+  padding: 2.5rem 1.25rem;
+  min-width: 0; /* prevent flex overflow */
   max-width: 900px;
+}
+
+@media (min-width: 640px) {
+  .docs-content {
+    padding: 3rem 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .docs-content {
+    padding: 4rem 5rem;
+  }
 }
 
 /* Markdown Content Styling */
@@ -471,12 +634,21 @@ a:hover {
   width: 100%;
   border-collapse: collapse;
   margin: 2rem 0;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .markdown-content th, .markdown-content td {
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   border: 1px solid rgba(255,255,255,0.08);
   text-align: left;
+  white-space: nowrap;
+}
+
+.markdown-content td {
+  white-space: normal;
+  min-width: 120px;
 }
 
 .markdown-content th {
@@ -485,11 +657,11 @@ a:hover {
   color: var(--text-primary);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .docs-layout {
     flex-direction: column;
   }
-  
+
   .docs-sidebar {
     width: 100%;
     height: auto;
@@ -497,10 +669,62 @@ a:hover {
     border-bottom: 1px solid var(--border-color);
     position: relative;
     top: 0;
-    padding: 1.5rem;
+    padding: 0;
+    overflow: visible;
   }
-  
-  .docs-content {
-    padding: 2.5rem 1.5rem;
+
+  /* Mobile toggle button */
+  .docs-sidebar-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background: rgba(255,255,255,0.03);
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: var(--font-sans);
   }
+
+  .docs-sidebar-toggle:hover {
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* Sidebar body collapsed by default on mobile */
+  .docs-sidebar-body {
+    display: none;
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .docs-sidebar-body.open {
+    display: block;
+  }
+
+  /* Prevent full-form from overflowing */
+  .hero .full-form {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* Markdown code blocks on mobile */
+  .markdown-content pre {
+    font-size: 0.78rem;
+    padding: 1rem;
+  }
+
+  /* Features section heading */
+  .features-section h2 {
+    font-size: 1.75rem !important;
+  }
+}
+
+/* Global overflow guard */
+html, body {
+  overflow-x: hidden;
 }
